@@ -68,13 +68,10 @@ bool isNumber(const char* token)
 }
 
 int main() {
-    FILE *file=fopen("sh.text","r");
-    char input[1000];   
-    fread(input,sizeof(char),sizeof(input)-1,file);
-    fclose(file);
-    input[sizeof(input)-1]='\0';
-  
-    char* token = strtok(input, " \t\n;");
+     // Fixed input at compile time
+    char input[] = "int a = 5;  float b = a + 3.14";
+     char* token = strtok(input, " \t\n;");
+
 
     while (token != NULL) {
         if (isKeyword(token)) {

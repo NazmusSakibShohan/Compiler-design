@@ -68,9 +68,14 @@ bool isNumber(const char* token)
 }
 
 int main() {
-     // Fixed input at compile time
-    char input[] = "int a = 5;  float b = a + 3.14";
-     char* token = strtok(input, " \t\n;");
+     FILE *file = fopen("input.txt", "r");
+    char input[1000]; 
+    fread(input, sizeof(char), sizeof(input) - 1, file);
+    fclose(file);
+
+    input[sizeof(input) - 1] = '\0'; 
+
+    char* token = strtok(input, " \t\n;");
 
 
     while (token != NULL) {
